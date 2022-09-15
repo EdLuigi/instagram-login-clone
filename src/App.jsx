@@ -106,7 +106,7 @@ const FormLogin = (props) => {
                     Forgot password?
                 </a>
             </Card>
-            <div className="flex item-center justify-center mt-3 p-4 bg-white border-[1px] border-gray-300 gap-1 text-sm">
+            <div className="flex item-center justify-center mt-2 p-4 bg-white border-[1px] border-gray-300 gap-1 text-sm">
                 <h5 className="text-gray-700">Don't have an account?</h5>
                 <a href="#" className="text-[#1098f3] hover:text-[#89caf5]">
                     <strong>Sign up</strong>
@@ -120,9 +120,11 @@ const FormLogin = (props) => {
 
 const Links = (props) => {
     return (
-        <div className="flex flex-col mt-4 gap-5">
-            <div className="flex justify-center">Get the app.</div>
-            <div className="flex gap-4 justify-center">
+        <div className="flex flex-col mt-5 gap-5">
+            <h5 className="flex justify-center text-sm text-gray-700">
+                Get the app.
+            </h5>
+            <div className="flex gap-2 justify-center">
                 <a href="#">
                     <img
                         src="../assets/link1.png"
