@@ -3,7 +3,7 @@ import { AiFillFacebook } from "react-icons/ai";
 
 const Container = (props) => {
     return (
-        <div className="flex align-middle justify-center gap-5 bg-instagramBg pt-8">
+        <div className="flex justify-center gap-0 bg-purple-100 pt-[7vh]">
             {props.children}
         </div>
     );
@@ -12,14 +12,14 @@ const Container = (props) => {
 const Slide = (props) => {
     return (
         <div>
-            <img src="../assets/0.png" width={"380px"} height={"580px"} />
+            <img src="../assets/0.png" />
         </div>
     );
 };
 
 const Card = (props) => {
     return (
-        <div className="flex flex-col bg-white p-10 align-middle justify-center w-auto gap-3 border-2">
+        <div className="flex flex-col bg-white p-10 pt-12 pb-5 justify-center w-[350px] auto gap-5 border-[1px] border-gray-300">
             {props.children}
         </div>
     );
@@ -29,6 +29,15 @@ const FormLogin = (props) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [preenchido, setPreenchido] = useState(false);
+
+    // useEffect(() => {
+    //     if (login.length > 6 && password.length > 6) {
+    //         setPreenchido(true);
+    //     }else{
+
+    //     }
+    // }, [login, password]);
+
     return (
         <div>
             <Card>
@@ -36,11 +45,11 @@ const FormLogin = (props) => {
                     src="../assets/logo.png"
                     width={"175px"}
                     height={"51px"}
-                    className="mx-auto"
+                    className="mx-auto mb-3"
                 />
-                <form className="flex flex-col gap-3" onSubmit={() => {}}>
+                <form className="flex flex-col gap-2" onSubmit={() => {}}>
                     <input
-                        className="bg-instagramBg border-2"
+                        className="bg-instagramBg border-[0.5px] border-gray-300 rounded p-[10px] text-xs"
                         type={"text"}
                         placeholder="Phone number, username or e-mail"
                         value={login}
@@ -49,7 +58,7 @@ const FormLogin = (props) => {
                         }}
                     />
                     <input
-                        className="bg-instagramBg border-2"
+                        className="bg-instagramBg border-[0.5px] border-gray-300 rounded p-[10px] text-xs mb-2"
                         type={"password"}
                         placeholder="Password"
                         value={password}
@@ -62,27 +71,44 @@ const FormLogin = (props) => {
                         type={"submit"}
                         onClick={() => {}}
                         className={
-                            "text-white rounded-sm " +
-                            (preenchido ? "bg-[#0095F6]" : "bg-[#B2DFFC]")
+                            "text-white rounded text-[14px] py-1 font-bold " +
+                            (preenchido
+                                ? "bg-[#0095F6] cursor-pointer"
+                                : "bg-[#B2DFFC]")
                         }
                         value="Log in"
+                        disabled={!preenchido}
                     />
                 </form>
 
-                <h5 className="flex justify-center">or</h5>
+                <div className="flex gap-3 items-center justify-center mt-2">
+                    <div className="bg-gray-300 h-[1px] w-[100%] flex justify-center items-center relative">
+                        <div className="bg-white px-4 relative">
+                            <h5 className="text-gray-400 text-sm font-bold">
+                                OR
+                            </h5>
+                        </div>
+                    </div>
+                </div>
 
-                <a href="#" className="flex justify-center">
+                <a
+                    href="#"
+                    className="flex items-center justify-center text-[#385185] gap-1 text-sm mt-3"
+                >
                     <AiFillFacebook className="mt-0.5 " size="20px" />
-                    Log in with Facebook
+                    <h5 className="font-[550]">Log in with Facebook</h5>
                 </a>
 
-                <a href="#" className="flex justify-center">
+                <a
+                    href="#"
+                    className="flex justify-center text-[#385185] text-xs"
+                >
                     Forgot password?
                 </a>
             </Card>
-            <div className="flex align-middle justify-center mt-3 p-3 bg-white border-2 gap-1">
-                Don't have an account?
-                <a href="#" className="text-[#0496F6] hover:text-[#89caf5]">
+            <div className="flex item-center justify-center mt-3 p-4 bg-white border-[1px] border-gray-300 gap-1 text-sm">
+                <h5 className="text-gray-700">Don't have an account?</h5>
+                <a href="#" className="text-[#1098f3] hover:text-[#89caf5]">
                     <strong>Sign up</strong>
                 </a>
             </div>
@@ -94,7 +120,7 @@ const FormLogin = (props) => {
 
 const Links = (props) => {
     return (
-        <div className="flex flex-col align-middle mt-4 gap-5">
+        <div className="flex flex-col mt-4 gap-5">
             <div className="flex justify-center">Get the app.</div>
             <div className="flex gap-4 justify-center">
                 <a href="#">
@@ -121,6 +147,7 @@ const Footer = (props) => {
         "Meta",
         "About",
         "Blog",
+        "Jobs",
         "Help",
         "API",
         "Privacy",
@@ -139,26 +166,38 @@ const Footer = (props) => {
         "Music",
         "Visual Arts",
     ];
-    const thirdRow = ["english", "©2022 Instagram from @edluigi"];
+    const thirdRow = ["English", "©2022 Instagram from @edluigi"];
     return (
-        <div className="flex mt-10 gap-3 flex-col">
-            <div className="flex justify-center align-middle gap-3">
+        <div className="flex mt-10 gap-2 flex-col fixed w-[100%] justify-center bottom-0 pb-8 text-xs">
+            <div className="flex justify-center gap-4">
                 {linksFirstRow.map((i) => (
-                    <a href="#" className="text-gray-400">
+                    <a
+                        href="#"
+                        className="text-gray-500"
+                        key={linksFirstRow.indexOf(i)}
+                    >
                         {i}
                     </a>
                 ))}
             </div>
-            <div className="flex justify-center align-middle gap-3">
+            <div className="flex justify-center gap-3 mb-2">
                 {linksSecondRow.map((i) => (
-                    <a href="#" className="text-gray-400">
+                    <a
+                        href="#"
+                        className="text-gray-500"
+                        key={linksSecondRow.indexOf(i)}
+                    >
                         {i}
                     </a>
                 ))}
             </div>
-            <div className="flex justify-center align-middle gap-3">
+            <div className="flex justify-center gap-3">
                 {thirdRow.map((i) => (
-                    <a href="#" className="text-gray-400">
+                    <a
+                        href="#"
+                        className="text-gray-500"
+                        key={thirdRow.indexOf(i)}
+                    >
                         {i}
                     </a>
                 ))}
@@ -185,10 +224,10 @@ export default function App() {
     return (
         <div>
             <Container>
-                <Slide />
+                {!isMobile && <Slide />}
                 <FormLogin />
             </Container>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }
