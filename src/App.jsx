@@ -3,23 +3,83 @@ import { AiFillFacebook } from "react-icons/ai";
 
 const Container = (props) => {
     return (
-        <div className="flex justify-center gap-0 bg-purple-100 pt-[7vh]">
+        <div className="flex justify-center gap-8 bg-purple-100 pt-[7vh]">
             {props.children}
         </div>
     );
 };
 
-const Slide = (props) => {
+const Slideshow = (props) => {
+    const slideshow = [
+        "../assets/1.png",
+        "../assets/2.png",
+        "../assets/3.png",
+        "../assets/4.png",
+    ];
+    const [slideshow1, setSlideshow1] = useState(0);
+    const [slideshow2, setSlideshow2] = useState(0);
+    const [fadeEffect, setFadeEffect] = useState(true);
+    const timer = 5000;
+    const duration = "2000";
+
+    const toggleFadeEffect = () => {
+        setFadeEffect(!fadeEffect);
+    };
+
+    const handleSlideshows = () => {
+        if (fadeEffect) {
+            if (slideshow1 == slideshow.length - 1) {
+                setSlideshow2(0);
+            } else {
+                setSlideshow2(slideshow1 + 1);
+            }
+        } else {
+            if (slideshow2 == slideshow.length - 1) {
+                setSlideshow1(0);
+            } else {
+                setSlideshow1(slideshow2 + 1);
+            }
+        }
+    };
+
+    useEffect(() => {
+        const timerSlideshow = setTimeout(() => {
+            handleSlideshows();
+            toggleFadeEffect();
+        }, timer);
+
+        return () => {
+            clearTimeout(timerSlideshow);
+        };
+    }, [slideshow1, slideshow2]);
+
     return (
-        <div>
-            <img src="../assets/0.png" />
+        <div className="flex">
+            <img src="../assets/0.png" className="" />
+
+            <div className={"flex absolute pl-[110px] pt-[25px]"}>
+                <img
+                    src={slideshow[slideshow1]}
+                    className={
+                        `duration-[${duration}ms] ` +
+                        (fadeEffect ? "opacity-100" : "opacity-0")
+                    }
+                />
+                <img
+                    src={slideshow[slideshow2]}
+                    className={
+                        `absolute duration-[${duration}ms] ` +
+                        (!fadeEffect ? "opacity-100" : "opacity-0")
+                    }
+                />
+            </div>
         </div>
     );
 };
 
 const Card = (props) => {
     return (
-        <div className="flex flex-col bg-white p-10 pt-12 pb-5 justify-center w-[350px] auto gap-5 border-[1px] border-gray-300">
+        <div className="flex flex-col bg-white p-10 pt-12 mt-3 pb-5 justify-center w-[350px] gap-5 border-[1px] border-gray-300">
             {props.children}
         </div>
     );
@@ -226,7 +286,7 @@ export default function App() {
     return (
         <div>
             <Container>
-                {!isMobile && <Slide />}
+                {!isMobile && <Slideshow />}
                 <FormLogin />
             </Container>
             {/* <Footer /> */}
