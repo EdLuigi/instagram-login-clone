@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 
 export const Slideshow = (props) => {
+    const imagemBg = "/assets/0.png";
     const slideshowData = [
-        "../assets/1.png",
-        "../assets/2.png",
-        "../assets/3.png",
-        "../assets/4.png",
+        "/assets/1.png",
+        "/assets/2.png",
+        "/assets/3.png",
+        "/assets/4.png",
     ];
     const [slideshow1, setSlideshow1] = useState(0);
     const [slideshow2, setSlideshow2] = useState(0);
     const [fadeEffect, setFadeEffect] = useState(true);
     const timer = 5000;
-    const duration = "2000";
+    const duration = "duration-[2000ms] ";
 
     const toggleFadeEffect = () => {
         setFadeEffect(!fadeEffect);
@@ -46,20 +47,20 @@ export const Slideshow = (props) => {
 
     return (
         <div className="flex">
-            <img src="../assets/0.png" className="" />
+            <img src={imagemBg} />
 
             <div className={"flex absolute pl-[110px] pt-[25px]"}>
                 <img
                     src={slideshowData[slideshow1]}
                     className={
-                        `duration-[${duration}ms] ` +
-                        (fadeEffect ? "opacity-100" : "opacity-0")
+                        duration + (fadeEffect ? "opacity-100" : "opacity-0")
                     }
                 />
                 <img
                     src={slideshowData[slideshow2]}
                     className={
-                        `absolute duration-[${duration}ms] ` +
+                        "absolute " +
+                        duration +
                         (!fadeEffect ? "opacity-100" : "opacity-0")
                     }
                 />
