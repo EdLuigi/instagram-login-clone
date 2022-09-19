@@ -20,12 +20,9 @@ export const Login = (props) => {
     }, []);
 
     return (
-        <div>
-            <Container>
-                {!isMobile && <Slideshow />}
-                <FormLogin />
-            </Container>
-            <Footer />
-        </div>
+        <Container>
+            {!isMobile && <Slideshow />}
+            <FormLogin />
+        </Container>
     );
 };

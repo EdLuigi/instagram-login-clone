@@ -1,4 +1,20 @@
-export const Footer = (props) => {
+const Container = (props) => {
+    return (
+        <div className="flex justify-center gap-4 flex-wrap text-xs">
+            {props.children}
+        </div>
+    );
+};
+
+const Links = (props) => {
+    return (
+        <a href="#" className="text-gray-500">
+            {props.children}
+        </a>
+    );
+};
+
+const FirstRow = () => {
     const linksFirstRow = [
         "Meta",
         "About",
@@ -15,6 +31,16 @@ export const Footer = (props) => {
         "Contact Uploading & Non-Users",
     ];
 
+    return (
+        <Container>
+            {linksFirstRow.map((i) => (
+                <Links key={linksFirstRow.indexOf(i)}>{i}</Links>
+            ))}
+        </Container>
+    );
+};
+
+const SecondRow = () => {
     const linksSecondRow = [
         "Dance",
         "Food & Drink",
@@ -22,42 +48,35 @@ export const Footer = (props) => {
         "Music",
         "Visual Arts",
     ];
-    const thirdRow = ["English", "©2022 Instagram from @edluigi"];
+
     return (
-        <div className="flex mt-10 gap-2 flex-col fixed w-[100%] justify-center bottom-0 pb-8 text-xs">
-            <div className="flex justify-center gap-4">
-                {linksFirstRow.map((i) => (
-                    <a
-                        href="#"
-                        className="text-gray-500"
-                        key={linksFirstRow.indexOf(i)}
-                    >
-                        {i}
-                    </a>
-                ))}
-            </div>
-            <div className="flex justify-center gap-3 mb-2">
-                {linksSecondRow.map((i) => (
-                    <a
-                        href="#"
-                        className="text-gray-500"
-                        key={linksSecondRow.indexOf(i)}
-                    >
-                        {i}
-                    </a>
-                ))}
-            </div>
-            <div className="flex justify-center gap-3">
-                {thirdRow.map((i) => (
-                    <a
-                        href="#"
-                        className="text-gray-500"
-                        key={thirdRow.indexOf(i)}
-                    >
-                        {i}
-                    </a>
-                ))}
-            </div>
-        </div>
+        <Container>
+            {linksSecondRow.map((i) => (
+                <Links key={linksSecondRow.indexOf(i)}>{i}</Links>
+            ))}
+        </Container>
+    );
+};
+
+const ThirdRow = () => {
+    const thirdRow = ["English", "©2022 Instagram from @edluigi"];
+
+    return (
+        <Container>
+            {thirdRow.map((i) => (
+                <Links key={thirdRow.indexOf(i)}>{i}</Links>
+            ))}
+        </Container>
+    );
+};
+
+export const Footer = (props) => {
+    return (
+        <footer className="bg-cyan-200 py-14">
+            {/* <footer className="flex mt-10 gap-2 flex-col fixed w-[100%] justify-center bottom-0 pb-8 text-xs"> */}
+            <FirstRow />
+            <SecondRow />
+            <ThirdRow />
+        </footer>
     );
 };

@@ -1,10 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 @layer base {
-    body {
-        @apply bg-[#FAFAFA];
-        /* @apply bg-instagramBg; */
+    head {
+        @apply h-full;
     }
-}
+    body {
+        @apply h-full;
+        @apply bg-[#e58282];
+        @apply bg-instagramBg;
+    }
+} */
