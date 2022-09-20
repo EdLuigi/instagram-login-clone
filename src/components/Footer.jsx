@@ -1,3 +1,5 @@
+import { AiFillGithub } from "react-icons/ai";
+
 const Container = (props) => {
     return (
         <div className="flex justify-center gap-4 flex-wrap text-xs">
@@ -7,8 +9,14 @@ const Container = (props) => {
 };
 
 const Links = (props) => {
+    const href = props.href ?? "#";
+    const target = props.href == null ? "" : "_blank";
     return (
-        <a href="#" className="text-gray-500 text-opacity-80">
+        <a
+            href={href}
+            target={target}
+            className="text-gray-500 text-opacity-80"
+        >
             {props.children}
         </a>
     );
@@ -59,14 +67,18 @@ const SecondRow = () => {
 };
 
 const ThirdRow = () => {
-    const thirdRow = ["English", "©2022 Instagram from @edluigi"];
+    const thirdRow = ["English", "©2022 Instagram clone from @edluigi"];
 
     return (
         <Container>
             <div className="flex mt-3 gap-3">
-                {thirdRow.map((i) => (
-                    <Links key={thirdRow.indexOf(i)}>{i}</Links>
-                ))}
+                <Links>{thirdRow[0]}</Links>
+                <Links href="https://github.com/EdLuigi/">
+                    <div className="flex">
+                        {thirdRow[1]}
+                        <AiFillGithub size={"17px"} />
+                    </div>
+                </Links>
             </div>
         </Container>
     );
@@ -74,7 +86,7 @@ const ThirdRow = () => {
 
 export const Footer = (props) => {
     return (
-        <footer className="flex flex-col py-14 gap-2 ">
+        <footer className="flex flex-col py-16 gap-2 px-6">
             <FirstRow />
             <SecondRow />
             <ThirdRow />

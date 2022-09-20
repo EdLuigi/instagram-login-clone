@@ -59,19 +59,17 @@ export const FormLogin = (props) => {
                     />
                 </form>
 
-                <div className="flex gap-3 items-center justify-center mt-2">
-                    <div className="bg-gray-300 h-[1px] w-[100%] flex justify-center items-center relative">
-                        <div className="bg-white px-4 relative">
-                            <h5 className="text-gray-400 text-sm font-bold">
-                                OR
-                            </h5>
-                        </div>
-                    </div>
+                <div className="flex items-center justify-center my-0">
+                    <div className="bg-gray-300 h-[1px] w-[100%] flex justify-center items-center relative"></div>
+                    <h5 className="text-gray-400 text-sm font-bold relative px-4">
+                        OR
+                    </h5>
+                    <div className="bg-gray-300 h-[1px] w-[100%] flex justify-center items-center relative"></div>
                 </div>
 
                 <a
                     href="#"
-                    className="flex items-center justify-center text-[#385185] gap-1 text-sm mt-3"
+                    className="flex items-center justify-center text-[#385185] gap-1 text-sm mt-0"
                 >
                     <AiFillFacebook className="mt-0.5 " size="20px" />
                     <h5 className="font-[550]">Log in with Facebook</h5>
@@ -84,7 +82,7 @@ export const FormLogin = (props) => {
                     Forgot password?
                 </a>
             </Card>
-            <div className="flex item-center justify-center mt-2 p-4 bg-white border-[1px] border-gray-300 gap-1 text-sm">
+            <div className="flex item-center justify-center mt-2 p-5 bg-white border-[1px] border-gray-300 gap-1 text-sm">
                 <h5 className="text-gray-700">Don't have an account?</h5>
                 <a href="#" className="text-[#1098f3] hover:text-[#89caf5]">
                     <strong>Sign up</strong>
