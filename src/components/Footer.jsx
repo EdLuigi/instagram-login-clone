@@ -8,7 +8,7 @@ const Container = (props) => {
 
 const Links = (props) => {
     return (
-        <a href="#" className="text-gray-500">
+        <a href="#" className="text-gray-500 text-opacity-80">
             {props.children}
         </a>
     );
@@ -63,17 +63,18 @@ const ThirdRow = () => {
 
     return (
         <Container>
-            {thirdRow.map((i) => (
-                <Links key={thirdRow.indexOf(i)}>{i}</Links>
-            ))}
+            <div className="flex mt-3 gap-3">
+                {thirdRow.map((i) => (
+                    <Links key={thirdRow.indexOf(i)}>{i}</Links>
+                ))}
+            </div>
         </Container>
     );
 };
 
 export const Footer = (props) => {
     return (
-        <footer className="bg-cyan-200 py-14">
-            {/* <footer className="flex mt-10 gap-2 flex-col fixed w-[100%] justify-center bottom-0 pb-8 text-xs"> */}
+        <footer className="flex flex-col py-14 gap-2 ">
             <FirstRow />
             <SecondRow />
             <ThirdRow />
